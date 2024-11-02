@@ -5,7 +5,6 @@ COPY package.json package-lock.json ./
 
 RUN npm install
 
-# TODO is this necessary because of the development watch mode?
 COPY . .
 
 EXPOSE 3000
