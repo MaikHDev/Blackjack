@@ -25,5 +25,6 @@ choco install make
 
 1. Clone the repository
 2. Run `npm install` to install the dependencies
-3. Run `make` to start the website and database
-4. Open `http://localhost:3000` in your browser
+3. Copy the `.env.example` file to `.env` and fill in the values
+4. Run `make` to start the website and database
+5. Open `http://localhost:3000` in your browser
