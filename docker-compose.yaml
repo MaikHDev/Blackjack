@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:17
+    container_name: Database
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+    volumes:
+      - blackjack_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  blackjack:
+    container_name: Blackjack
+    build:
+      context: .
+      target: development
+    env_file: .env
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app/
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+
+volumes:
+  blackjack_postgres_data:
