@@ -6,9 +6,20 @@
 
 - Docker
 - Node.js
+- Make
 
-On Windows you may want to install [Make for Windows](https://sourceforge.net/projects/gnuwin32) to run the Makefile
-commands.
+#### Make installation for Windows using Chocolatey
+
+If you have not installed Chocolatey, you can install it by running the following command in an elevated PowerShell prompt:
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+Then you can install Make by running the following command in an elevated PowerShell prompt:
+
+```bash
+choco install make
+```
 
 ### Setup
 
