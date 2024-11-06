@@ -1,4 +1,42 @@
 services:
+  proxy:
+    build:
+      context: .
+      dockerfile: traefik.Dockerfile
+    container_name: Proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./ssl/:/ssl/
+    develop:
+      watch:
+        - action: rebuild
+          path: traefik.yaml
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+
+  blackjack:
+    container_name: Blackjack
+    build:
+      context: .
+      target: development
+    env_file: .env
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app/
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+    labels:
+      traefik.http.routers.tic-tac-toe-website.rule: Host(`localhost`)
+      traefik.http.routers.tic-tac-toe-website.tls: true
+    depends_on:
+      - db
+
   db:
     image: postgres:17
     container_name: Database
@@ -10,26 +48,6 @@ services:
       - blackjack_postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
-  blackjack:
-    container_name: Blackjack
-    build:
-      context: .
-      target: development
-    env_file: .env
-    ports:
-      - "3000:3000"
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app/
-          ignore:
-            - node_modules/
-        - action: rebuild
-          path: package.json
-        - action: rebuild
-          path: .env
 
 volumes:
   blackjack_postgres_data:
