@@ -18,7 +18,9 @@ tests
 README.md
 *.md
 *.txt
+# Act
 act
+*event.json
 
 # Build
 .next
@@ -56,4 +58,6 @@ Thumbs.db
 # Docs
 docs
 
+# Deployment
 Makefile
+k8s
