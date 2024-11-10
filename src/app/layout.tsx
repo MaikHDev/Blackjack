@@ -3,7 +3,9 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
+import { Header } from "@/app/_components/Header";
 import { TRPCReactProvider } from "@/trpc/react";
+import { type ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -13,12 +15,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
-    </html>
+    <TRPCReactProvider>
+      <html lang="en" className={GeistSans.variable}>
+        <body className={"grid grid-rows_[auto_*]"}>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </TRPCReactProvider>
   );
 }
