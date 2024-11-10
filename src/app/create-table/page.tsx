@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card } from "@/app/_components/ui/card";
-import { Input } from "@/app/_components/ui/input";
 import { Button } from "@/app/_components/ui/button";
+import { Input } from "@/app/_components/ui/input";
 import { X } from "lucide-react";
+import { Card } from "@/app/_components/ui/card";
 import { Switch } from "@/app/_components/ui/switch";
 
 export default function Home() {
   const [maxPlayers, setMaxPlayers] = useState(6);
-  const [stakes, setStakes] = useState(500);
+  const [minimumStakes, setMinimumStakes] = useState(500);
+  const [isPrivate, setIsPrivate] = useState(false);
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
@@ -51,29 +52,33 @@ export default function Home() {
 
           <div className="flex items-center justify-between">
             <span className="text-sm">Private table</span>
-            <Switch />
+            <Switch checked={isPrivate} onCheckedChange={setIsPrivate} />
           </div>
 
-          <Input
-            type="password"
-            placeholder="Table password"
-            className="w-full"
-          />
+          {isPrivate && (
+            <Input
+              type="password"
+              placeholder="Table password"
+              className="w-full"
+            />
+          )}
 
           <div className="space-y-1">
-            <label className="text-sm">Stakes: ${stakes}</label>
+            <label className="text-sm">Minimum stakes: ${minimumStakes}</label>
             <input
               type="range"
               min="100"
               max="1000"
-              value={stakes}
-              onChange={(e) => setStakes(Number(e.target.value))}
+              value={minimumStakes}
+              onChange={(e) => setMinimumStakes(Number(e.target.value))}
               className="w-full"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm">Select your table's background</label>
+            <label className="text-sm">
+              Select your table&#39;s background
+            </label>
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square bg-emerald-800 rounded-lg cursor-pointer" />
               <div className="aspect-square bg-gray-100 rounded-lg cursor-pointer border-2 border-dashed border-gray-300" />
