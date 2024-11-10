@@ -4,7 +4,6 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { Header } from "@/app/_components/Header";
-import { cn } from "@/lib/utils";
 import { TRPCReactProvider } from "@/trpc/react";
 import { type ReactNode } from "react";
 
@@ -19,14 +18,12 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <TRPCReactProvider>
-      <html lang="en" className={cn(GeistSans.variable, "min-h-screen")}>
-        <body
-          className={
-            "grid-rows_[auto_1fr] bg-hero grid bg-cover bg-center bg-no-repeat"
-          }
-        >
-          <Header />
-          {children}
+      <html lang="en" className={GeistSans.variable}>
+        <body className={"bg-hero bg-cover bg-center bg-no-repeat"}>
+          <div className={"grid min-h-screen grid-rows-[auto_1fr]"}>
+            <Header />
+            {children}
+          </div>
         </body>
       </html>
     </TRPCReactProvider>
