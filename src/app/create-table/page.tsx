@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-      <Card className="w-full max-w-md p-6 space-y-6">
+      <Card className="w-full max-w-md space-y-6 p-6">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Creating your table</h2>
           <Button variant="ghost" size="icon" className="h-6 w-6">
@@ -80,8 +80,8 @@ export default function Home() {
               Select your table&#39;s background
             </label>
             <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square bg-emerald-800 rounded-lg cursor-pointer" />
-              <div className="aspect-square bg-gray-100 rounded-lg cursor-pointer border-2 border-dashed border-gray-300" />
+              <div className="aspect-square cursor-pointer rounded-lg bg-emerald-800" />
+              <div className="aspect-square cursor-pointer rounded-lg border-2 border-dashed border-gray-300 bg-gray-100" />
             </div>
           </div>
 
