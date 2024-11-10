@@ -4,4 +4,4 @@ metadata:
   name: ${APP_NAME}-config
   namespace: ${NAMESPACE}
 data:
-  # TODO add environment variables here
+  EXAMPLE_ENV_VAR: "example"
