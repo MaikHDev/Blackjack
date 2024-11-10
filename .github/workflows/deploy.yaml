@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DOCKER_IMAGE: ${DOCKERHUB_USERNAME}/blackjack
+  DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/blackjack
   APP_NAME: blackjack
 
 jobs:
