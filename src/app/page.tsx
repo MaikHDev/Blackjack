@@ -1,27 +1,14 @@
-import Link from "next/link";
-import { auth } from "@/server/auth";
-import { api, HydrateClient } from "@/trpc/server";
+import { QuickLinks } from "@/app/_components/QuickLinks";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await auth();
-
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
-  }
-
   return (
-    <HydrateClient>
-      <nav className="flex">
-        <div className="flex-grow">aasd</div>
-        <div className="flex-grow">Herro</div>
-      </nav>
-      <Link
-        href={session ? "/api/auth/signout" : "/api/auth/signin"}
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-      >
-        {session ? "Sign out" : "Sign in"}
-      </Link>
-    </HydrateClient>
+    <main className={"flex items-center justify-center text-white"}>
+      <div className={"flex h-full flex-col gap-10"}>
+        <h1 className={"mt-40 text-7xl"}>Welcome to 21 hub</h1>
+        <div className={"mt-40"}>
+          <QuickLinks />
+        </div>
+      </div>
+    </main>
   );
 }

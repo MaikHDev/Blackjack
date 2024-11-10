@@ -14,7 +14,7 @@ export function QuickLinks() {
           <div key={item.name}>
             <Link
               href={item.href}
-              className={"w-max rounded-xl px-4 py-3 shadow-md"}
+              className={"rounded-xl bg-white px-5 py-3 text-black"}
             >
               {item.name}
             </Link>

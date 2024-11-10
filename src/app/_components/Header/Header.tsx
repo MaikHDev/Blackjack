@@ -9,7 +9,7 @@ export const navigation = [
 export function Header() {
   return (
     <div className={"flex w-full justify-center"}>
-      <header className="flex h-20 w-full max-w-7xl items-center justify-between px-20">
+      <header className="flex h-20 w-full max-w-7xl items-center justify-between px-20 text-white">
         <Link href={"/"}>
           <span className={"text-xl"}>21 Hub</span>
         </Link>

@@ -19,9 +19,11 @@ export default function RootLayout({
   return (
     <TRPCReactProvider>
       <html lang="en" className={GeistSans.variable}>
-        <body className={"grid grid-rows_[auto_*]"}>
-          <Header />
-          {children}
+        <body className={"bg-hero bg-cover bg-center bg-no-repeat"}>
+          <div className={"grid min-h-screen grid-rows-[auto_1fr]"}>
+            <Header />
+            {children}
+          </div>
         </body>
       </html>
     </TRPCReactProvider>
