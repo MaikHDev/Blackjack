@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/app/_components/ui/card";
+import { Input } from "@/app/_components/ui/input";
+import { Button } from "@/app/_components/ui/button";
 import { X } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/app/_components/ui/switch";
 
 export default function Home() {
   const [maxPlayers, setMaxPlayers] = useState(6);
